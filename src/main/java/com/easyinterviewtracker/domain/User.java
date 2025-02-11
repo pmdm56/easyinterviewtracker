@@ -1,5 +1,6 @@
 package com.easyinterviewtracker.domain;
 
+import com.easyinterviewtracker.dto.UserDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -27,4 +28,8 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<JobApplication> jobApplications;
 
+    public User(UserDTO userDTO){
+        this.email = userDTO.email();
+        this.password = userDTO.password();
+    }
 }
